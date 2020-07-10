@@ -9,7 +9,13 @@ Created on Thu Jul  9 11:29:36 2020
 school_dic = {   
 'ironhack' : 10828,
 'app-academy' : 10525,
-'springboard' : 11035    
+'springboard' : 11035,
+'le-wagon' : 10868,
+'general-assembly' : 10761,
+'hackwagon-academy' : 10792,
+'udacity' : 11118,
+'thinkful' : 11098,
+'nyc-data-science-academy' : 10925    
 }
 
 import re
@@ -115,6 +121,7 @@ def clean_comments(comments):
     comments.rename(columns={'review_body': 'Review'}, inplace=True)
     #Substituting nulls
     comments = comments.fillna('not available')
+    comments["jobTitle"]=comments["jobTitle"].where(comments["jobTitle"]!="" ,"not available")
     return comments
 
 #cleaning locations
@@ -159,7 +166,7 @@ print(locations,comments,badges,schools,courses)
 
 from sqlalchemy import create_engine
 
-engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}".format(user="root",pw="D4taR00t!",db="amazing_team"))
+engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}".format(user="root",pw="Miami66!",db="amazing_project"))
 schools.to_sql('Schools', con = engine, if_exists = 'append', chunksize = 1000)
 
 comments.to_sql('Comments', con = engine, if_exists = 'append', chunksize = 1000)
