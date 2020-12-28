@@ -1,4 +1,4 @@
 # Amazing-Team-Project
 Consulting analytics project
 
-SQL project using webscrapped data
+SQL project using web scraped data
